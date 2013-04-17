@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MF_NGraph</class>
+ <widget class="QWidget" name="MF_NGraph">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>483</width>
+    <height>703</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QScrollBar" name="scr_h">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>300</y>
+     <width>281</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>100</number>
+   </property>
+   <property name="singleStep">
+    <number>1</number>
+   </property>
+   <property name="pageStep">
+    <number>1</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frame_gr">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>341</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <widget class="Gr_View" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>10</y>
+      <width>281</width>
+      <height>210</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>310</y>
+     <width>77</width>
+     <height>98</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="pb_Test3">
+      <property name="text">
+       <string>tst3</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pb_Test2">
+      <property name="text">
+       <string>tst2</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pb_Test">
+      <property name="text">
+       <string>tst1</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QScrollBar" name="scr_v">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>40</y>
+     <width>16</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="sb_ScaleX">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>330</y>
+     <width>62</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <double>0.100000000000000</double>
+   </property>
+   <property name="maximum">
+    <double>10.000000000000000</double>
+   </property>
+   <property name="singleStep">
+    <double>0.200000000000000</double>
+   </property>
+   <property name="value">
+    <double>1.000000000000000</double>
+   </property>
+  </widget>
+  <widget class="QSlider" name="verticalSlider">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>70</y>
+     <width>16</width>
+     <height>160</height>
+    </rect>
+   </property>
+   <property name="singleStep">
+    <number>1</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="sb_ScaleY">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>20</y>
+     <width>62</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <double>0.100000000000000</double>
+   </property>
+   <property name="maximum">
+    <double>10.000000000000000</double>
+   </property>
+   <property name="singleStep">
+    <double>0.200000000000000</double>
+   </property>
+   <property name="value">
+    <double>1.000000000000000</double>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Gr_View</class>
+   <extends>QGraphicsView</extends>
+   <header>gr_view.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pb_Test</sender>
+   <signal>clicked()</signal>
+   <receiver>MF_NGraph</receiver>
+   <slot>pb_Test_Clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>375</x>
+     <y>344</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>289</x>
+     <y>320</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pb_Test2</sender>
+   <signal>clicked()</signal>
+   <receiver>MF_NGraph</receiver>
+   <slot>pb_Test2_Clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>431</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>240</x>
+     <y>189</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pb_Test3</sender>
+   <signal>clicked()</signal>
+   <receiver>MF_NGraph</receiver>
+   <slot>pb_Test3_Clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>431</x>
+     <y>262</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>240</x>
+     <y>189</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sb_ScaleX</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>MF_NGraph</receiver>
+   <slot>sb_ScaleX_Changed(double)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>440</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>241</x>
+     <y>351</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sb_ScaleY</sender>
+   <signal>valueChanged(double)</signal>
+   <receiver>MF_NGraph</receiver>
+   <slot>sb_ScaleY_Changed(double)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>40</x>
+     <y>350</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>241</x>
+     <y>351</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>pb_Test_Clicked()</slot>
+  <slot>pb_Test2_Clicked()</slot>
+  <slot>pb_Test3_Clicked()</slot>
+  <slot>sb_ScaleX_Changed(double)</slot>
+  <slot>sb_ScaleY_Changed(double)</slot>
+ </slots>
+</ui>
