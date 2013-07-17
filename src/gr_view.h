@@ -10,27 +10,37 @@ class MW_NGraph;
 class Gr_View : public QGraphicsView, public N_Graph
 {
 	Q_OBJECT
+
+
 	public:
 		Gr_View(QWidget * parent = 0);
-		~Gr_View();
-		void SetSize(double,double);
-
-		void tmp_init();
+		void CalcSlyder();
+		void ShowGrid(double ,double,double ,double);
 		void AddData(std::vector<QPointF> tmp_point);//отрисовка фигур 
+		~Gr_View();
+		void Scale(qreal,qreal);
+
+		void SetSize(double,double);//set size Gr_View (pcs)
+		void tmp_init();//add data items (correct this later)
+		void tmp3();// 
+
+	private:
+
+
 		std::vector<QPointF> ConvertCoord(std::vector<QPointF>);//перевод в систему координатсцены для отрисовки
 		void CalcBaseScene();//вызывается при изменении высоты сцены
 
 		void SetBegin_XY(double, double);
-		void ShowGrid(double ,double,double ,double);
-		void Scale(qreal,qreal);
+
+
 //    void resizeEvent ( QResizeEvent * event ) ;
 	
 		double scale_x_GV;
 		double scale_y_GV;
 		void scrollContentsBy ( int dx, int dy );
-		void CalcSlyder();
+
 		void Draw_Gr_();
-		void tmp3();
+
 
     void SetXY(int, int);
     void SetSlyder();
@@ -45,7 +55,13 @@ class Gr_View : public QGraphicsView, public N_Graph
 	 QMenu myMenu;
 
 
-	private:
+//
+
+
+
+
+
+
 		void paintEvent(QPaintEvent *);
 
 		double text_space_x;//ширина поля по X для текста(оси Y)
