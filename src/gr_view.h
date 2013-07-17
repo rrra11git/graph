@@ -42,8 +42,12 @@ class Gr_View : public QGraphicsView, public N_Graph
 	double diap_base_x;
 	double diap_base_y;
 
+	 QMenu myMenu;
+
+
 	private:
 		void paintEvent(QPaintEvent *);
+
 		double text_space_x;//ширина поля по X для текста(оси Y)
 		double text_space_y;
 		double Base_X_Scene;//
@@ -51,15 +55,31 @@ class Gr_View : public QGraphicsView, public N_Graph
 		double D_Y_Scene;
 		double base_scene_size_x;
 
-double old_view_x;
-double new_view_x;
-		
-//		double diap_x;
-//		double diap_y;
+	double old_view_x;
+	double new_view_x;
+
+
+
+	void createActions();
+	void CorrectAction(unsigned char);
+	QAction * action_1;
+	QAction * action_2;
+	QAction * action_3;
+
 
 	public slots:
-    void SetX ( int);
-    void SetY(int);
+
+
+	void mouseMoveEvent (  QMouseEvent * mouseEvent );//QGraphicsSceneMouseEvent
+	void mousePressEvent(QMouseEvent *event);
+	void mouseReleaseEvent(QMouseEvent *event);
+	
+	void SetX ( int);
+	void SetY(int);
+	
+	void Menu_1();
+	void Menu_2();
+	void Menu_3();
 };
 
 #endif 

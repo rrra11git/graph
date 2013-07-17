@@ -2,7 +2,9 @@ SOURCES += main.cpp \
  gr_view.cpp \
  n_graph.cpp \
  mw_ngraph.cpp \
- overlay.cpp
+ overlay.cpp \
+ figuremy.cpp \
+ node.cpp
 TEMPLATE = app
 CONFIG += warn_on \
 	  thread \
@@ -16,7 +18,9 @@ DESTDIR = ../bin
 HEADERS += gr_view.h \
  n_graph.h \
  mw_ngraph.h \
- overlay.h
+ overlay.h \
+ figuremy.h \
+ node.h
 
 FORMS += mf_ngraph.ui
 
@@ -28,4 +32,6 @@ unix {
 
 
 CONFIG -= release
+
+RESOURCES += res_pict.qrc
 

@@ -3,7 +3,7 @@
 
 #include "gr_view.h"
 #include "mw_ngraph.h"
-
+#include "node.h"
 Gr_View::Gr_View ( QWidget * parent_ ) :QGraphicsView ( parent_ ),N_Graph()
 {
 	qDebug ( "Gr_View::Gr_View" );
@@ -23,6 +23,20 @@ setVerticalScrollBarPolicy ( Qt::ScrollBarAlwaysOff );
 QFrame* parent_fr=(QFrame*)parent_;
 parent=(MW_NGraph*)parent_fr->parent();;
 ///parent=(MW_NGraph*)parent_;
+
+setMouseTracking(true);
+setDragMode(QGraphicsView::RubberBandDrag);
+/*
+     myMenu.addAction("Menu Item 1");
+     myMenu.addAction("Menu Item 2");
+     myMenu.addAction("Menu Item 3");
+     myMenu.addAction("Menu Item 4");
+*/
+setContextMenuPolicy(Qt::ActionsContextMenu);
+//setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing);
+
+
+createActions();
 }
 
 Gr_View::~Gr_View()
@@ -74,9 +88,15 @@ void Gr_View::SetSize ( double tmp_w,double tmp_h )
 
 base_scene_size_x=scene()->width();
 
-setGeometry (text_space_x,0.5,tmp_w-text_space_x,210);
+//setGeometry (text_space_x,0.5,tmp_w-text_space_x,210);//210
 
-
+//--------
+//qApp->processEvents();
+setGeometry (text_space_x,0.5,tmp_w-text_space_x,tmp_h-text_space_y);//210
+int uuuu=2;
+//qDebug("-----------(())-------------- %d",uuuu);
+qDebug()<<"-----------(())-------------- "<<tmp_h-text_space_y;
+//--------
 
 	//resize ( tmp_w-text_space_x-0.0,tmp_h-text_space_y-0.0 );
 
@@ -157,7 +177,8 @@ void Gr_View::tmp_init()
 
 //AddData(data_point);
 //ConvertCoord(data_point);
-	AddData ( ConvertCoord ( data_point ) );
+//	AddData ( ConvertCoord ( data_point ) );
+	AddData (  data_point  );
 //scale_x
 }
 
@@ -165,9 +186,12 @@ void Gr_View::tmp_init()
 /*!
     \fn Gr_View::AddData(std::vector<QPointF> tmp_point)
  */
-void Gr_View::AddData ( std::vector<QPointF> tmp_point )
+void Gr_View::AddData ( std::vector<QPointF> tmp_point1 )
 {
 //	static QPointF tmp_point;
+
+std::vector<QPointF> tmp_point;
+tmp_point=ConvertCoord(tmp_point1);
 
 	std::vector<QPointF>::iterator tmp_it;
 	for ( tmp_it=tmp_point.begin();tmp_it!=tmp_point.end();tmp_it++ )
@@ -179,9 +203,15 @@ void Gr_View::AddData ( std::vector<QPointF> tmp_point )
 //		oops->setFlags(QGraphicsItem::ItemIsMovable);
 
 		QGraphicsRectItem * oops=scene ()->addRect ( QRectF ( *tmp_it,QSizeF ( 7,7 ) ),QPen(),QBrush ( Qt::blue ) );
-//		oops->setFlags(QGraphicsItem::ItemIsMovable);
+		oops->setFlags(QGraphicsItem::ItemIsMovable  );//|QGraphicsItem::ItemIsSelectable
 //		oops->setFlags(QGraphicsItem::ItemIgnoresTransformations);
-		
+///-----
+
+		Node *  fig_my=new  Node();
+		fig_my->setPos(QPointF(*tmp_it));
+		scene()->addItem(fig_my);
+
+///-----
 		qDebug("(*tmp_it).x() %f",(*tmp_it).x());
 	}
 }
@@ -501,3 +531,112 @@ qDebug(" parent->scr_v->setValue (tmmp.y())%f",tmmp.y());
 qDebug(" parent->scr_h->setValue (tmmp.x())%f",tmmp.x());
 Draw_Gr_();
 }
+
+
+/*!
+    \fn Gr_View::mouseMoveEvent ( QGraphicsSceneMouseEvent * mouseEvent )
+ */
+void Gr_View::mouseMoveEvent (  QMouseEvent * mouseEvent ) //QGraphicsSceneMouseEvent
+{
+	static int tmp;
+	//qDebug("mouseMoveEvent %d",tmp++);
+
+	if( items(mouseEvent->pos()).size() )
+	{
+	//	qDebug(" yes");
+	} //else qDebug("no");
+	QGraphicsView::mouseMoveEvent(mouseEvent);
+}
+
+
+
+
+void Gr_View::mousePressEvent(QMouseEvent *event)
+{
+	if(event->button() ==  Qt::RightButton )
+	{
+		unsigned char is_element;
+		
+		if( items(event->pos()).size() )
+		{
+			qDebug("yes el");
+			QPoint gl_point;
+			is_element=1;
+//			gl_point=mapToGlobal(event->pos());
+//			myMenu.exec(gl_point);//globalPos
+
+		}else is_element=0;
+		
+		CorrectAction(is_element);
+//		tmp_point=event->pos();
+
+//		posFirst.setX( event->pos().x() );
+//		posFirst.setY( event->pos().y() );
+//		pressed = true;
+//		selectionLine->setVisible(true);
+		qDebug("press R");
+
+
+	}	else	qDebug("press L");
+
+    QGraphicsView::mousePressEvent(event);
+}
+
+
+void Gr_View::mouseReleaseEvent(QMouseEvent *event)
+{
+	qDebug("mouseReleaseEvent");
+//	is_element=0;
+	QGraphicsView::mouseReleaseEvent(event);
+}
+
+
+void Gr_View::createActions()
+{
+	action_1 = new QAction(tr("Menu_1"), this);
+	action_1->setIcon(QIcon(":/pict/copy.png"));
+//	action_1->setShortcut(tr("Ctrl+1"));
+	insertAction(0,action_1);
+	connect(action_1, SIGNAL(triggered()), this, SLOT(Menu_1()));
+
+	action_2 = new QAction(tr("Menu_2"), this);
+	action_2->setIcon(QIcon(":/pict/cut.png"));
+//	action_2->setShortcut(tr("Ctrl+2"));
+	insertAction(0,action_2);
+	connect(action_2, SIGNAL(triggered()), this, SLOT(Menu_2()));
+
+	action_3 = new QAction(tr("Menu_3"), this);
+	action_3->setIcon(QIcon(":/pict/paste.png"));
+//	action_3->setShortcut(tr("Ctrl+3"));
+	insertAction(0,action_3);
+	connect(action_3, SIGNAL(triggered()), this, SLOT(Menu_3()));
+
+	qDebug("actions().size() %d",actions().size());
+
+}
+
+void Gr_View::Menu_1()
+{
+qDebug("void Gr_View::Menu_1()");
+
+}
+
+void Gr_View::Menu_2()
+{
+qDebug("void Gr_View::Menu_2()");
+}
+
+void Gr_View::Menu_3()
+{
+qDebug("void Gr_View::Menu_3()");
+}
+
+
+void Gr_View::CorrectAction( unsigned char tmp)
+{
+	action_1->setEnabled(tmp);
+	action_2->setEnabled(tmp);
+	action_3->setEnabled(tmp);
+}
+
+

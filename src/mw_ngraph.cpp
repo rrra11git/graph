@@ -45,10 +45,12 @@ connect(scr_v,SIGNAL(valueChanged ( int )),graphicsView,SLOT(SetY(int)));
 //--
 
 Overlay *   overlay = new Overlay(this);
-
+//Overlay *   overlay = new Overlay();
 overlay->setGeometry(frame_gr->geometry());
 overlay->SetPtrGr_View(graphicsView);
 overlay->show();
+
+//overlay->hide();
 
 graphicsView->CalcSlyder();
 //emit sig_scr_h(0);//
@@ -56,6 +58,13 @@ graphicsView->CalcSlyder();
 scr_h->setValue(0);
 scr_v->setValue(scr_v->maximum());
 
+///
+std::vector<QPointF> tmp;
+tmp.push_back(QPointF(15,30));
+graphicsView->AddData(tmp);
+
+
+///
 }
 
 MW_NGraph::~MW_NGraph()

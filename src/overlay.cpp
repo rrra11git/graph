@@ -5,6 +5,7 @@
 Overlay::Overlay(QWidget *parent) : QWidget(parent),p_gr_view(0)
 {
     setPalette(Qt::transparent);
+//    setPalette(Qt::blue);
     setAttribute(Qt::WA_TransparentForMouseEvents);
 }
  

@@ -1,0 +1,13 @@
+<RCC>
+<qresource>
+    <file>pict/bringtofront.png</file>
+    <file>pict/colors.png</file>
+    <file>pict/copy.png</file>
+    <file>pict/cut.png</file>
+    <file>pict/delete.png</file>
+    <file>pict/link.png</file>
+    <file>pict/node.png</file>
+    <file>pict/paste.png</file>
+    <file>pict/sendtoback.png</file>
+</qresource>
+</RCC>
