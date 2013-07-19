@@ -12,6 +12,7 @@
 #define St_l 2
 #define larrow 15
 
+
 N_Graph::N_Graph()
 {
 
@@ -102,6 +103,7 @@ void N_Graph::AddStrokeY(qreal x_tmp,qreal y_tmp)
 
 void N_Graph::AddArrow(qreal x_tmp,qreal y_tmp,double rotat)
 {
+//return;
 	QMatrix rotationMatrix;
 	rotationMatrix.translate(x_tmp,y_tmp);	
 	rotationMatrix.rotate(rotat);
@@ -276,11 +278,11 @@ Data_V_Axis.clear();
 AddGrid();
 
 	
-	AddAxisH(Base_X,Base_Y, Wa-Sk,50);
-	AddAxisV(Base_X,Base_Y, Ha-Sk,10);
+	AddAxisH(Base_X,Base_Y, Wa-0,50);//-Sk
+	AddAxisV(Base_X,Base_Y, Ha-0,10);//-Sk
 	
-	AddArrow(Base_X+Wa-Sk-larrow,Base_Y,0);
-	AddArrow(Base_X,Base_Y-Ha-Sk+larrow,-90);
+	AddArrow(Base_X+Wa-larrow,Base_Y,0);//-Sk
+	AddArrow(Base_X,Base_Y-Ha+larrow,-90);//-Sk
 
 }
 
@@ -453,8 +455,8 @@ void N_Graph::AddData(std::vector<QPointF> tmp_point)
 void N_Graph::CalcData(double first_h_diap,double first_v_diap)//
 {
 
-	lenght_axis_h=Wa-Sk-25;
-	lenght_axis_v=Ha-Sk-25;
+	lenght_axis_h=Wa-larrow-10;//-Sk-25
+	lenght_axis_v=Ha-larrow-10;//-Sk-25
 
 	scale_x=lenght_axis_h/diap_x;//(second_h_diap-first_h_diap)
 	scale_y=lenght_axis_v/diap_y;//(second_v_diap-first_v_diap)

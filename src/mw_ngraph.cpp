@@ -7,6 +7,7 @@ MW_NGraph::MW_NGraph(QWidget* parent, Qt::WFlags fl)
 {
 	setupUi(this);
 
+//graphicsView =new Gr_View(frame_gr);//
 
 QGraphicsScene * scene =new QGraphicsScene(QRectF(-000, 0, 600, 600));
 graphicsView->setScene(scene);

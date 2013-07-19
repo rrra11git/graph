@@ -19,6 +19,8 @@ public:
 
 //Gr_View * uuu;
 Overlay *   overlay;
+//Gr_View * graphicsView_1;
+
   /*$PUBLIC_FUNCTIONS$*/
 
 

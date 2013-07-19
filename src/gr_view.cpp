@@ -4,6 +4,12 @@
 #include "gr_view.h"
 #include "mw_ngraph.h"
 #include "node.h"
+
+#define margin_right 20
+#define margin_top 10
+
+
+
 Gr_View::Gr_View ( QWidget * parent_ ) :QGraphicsView ( parent_ ),N_Graph()
 {
 	qDebug ( "Gr_View::Gr_View" );
@@ -21,6 +27,7 @@ setHorizontalScrollBarPolicy ( Qt::ScrollBarAlwaysOff );
 setVerticalScrollBarPolicy ( Qt::ScrollBarAlwaysOff );
 
 QFrame* parent_fr=(QFrame*)parent_;
+
 parent=(MW_NGraph*)parent_fr->parent();;
 ///parent=(MW_NGraph*)parent_;
 
@@ -92,10 +99,15 @@ base_scene_size_x=scene()->width();
 
 //--------
 //qApp->processEvents();
-setGeometry (text_space_x,0.5,tmp_w-text_space_x,tmp_h-text_space_y);//210
+setGeometry (text_space_x,0.5+35,tmp_w-text_space_x-45,tmp_h-text_space_y-35);//ERROR!!!!
+/*
+35=10+margin_right+larrow
+*/
+
 int uuuu=2;
 //qDebug("-----------(())-------------- %d",uuuu);
 qDebug()<<"-----------(())-------------- "<<tmp_h-text_space_y;
+qDebug()<<"-----------()-------------- "<<tmp_h;
 //--------
 
 	//resize ( tmp_w-text_space_x-0.0,tmp_h-text_space_y-0.0 );
@@ -108,7 +120,7 @@ qDebug()<<"-----------(())-------------- "<<tmp_h-text_space_y;
 	SetBasePoint ( text_space_x,tmp_h-text_space_y );//text_space
 
 //	Set_W_H ( tmp_w-text_space_x-4.5,tmp_h-text_space_y-4.5 );//-18
-	Set_W_H ( tmp_w-text_space_x-4.5,tmp_h-text_space_y-4.5 );//
+	Set_W_H ( tmp_w-text_space_x-margin_right,tmp_h-text_space_y-margin_top );//
 	CalcBaseScene();
 
 
@@ -246,8 +258,9 @@ void Gr_View::CalcBaseScene()
 {
 	Base_X_Scene=0.0;// ( int ) Base_X;///scale_x_GV;//+(int)text_space_x;
 qDebug("Base_X_Scene %f scale_x %f",Base_X_Scene,scale_x);
-	D_Y_Scene=scene()->height()-viewport()->height();
-	Base_Y_Scene=/**/D_Y_Scene+Base_Y;//tmp_y;
+	D_Y_Scene=scene()->height()-viewport()->height()-0;
+//	Base_Y_Scene=/**/D_Y_Scene+Base_Y;//tmp_y;
+	Base_Y_Scene=scene()->height();//tmp_y;
 }
 
 
