@@ -19,12 +19,14 @@ class N_Graph
 
     void SetBasePoint(qreal,qreal);
     void Set_W_H(unsigned long int, unsigned long int);
-    void Draw_Gr(double, double);//,double,double
-    void AddGrid();
-    void AddData(std::vector<QPointF>);
-    void CalcData(double ,double);// ���������� ��������� ��������  
     void SetDiap_Y(double);
     void SetDiap_X(double);
+
+    void Draw_Gr(double, double);//,double,double
+
+ //   void AddData(std::vector<QPointF>);
+//    void CalcData(double ,double);// ���������� ��������� ��������  
+
 
 //	std::vector<unsigned long int>:: iterator optim_delta_it;
 		QPainterPath rectPath;
@@ -32,27 +34,32 @@ class N_Graph
 		QPainterPath gridPath;
 
 
-	qreal Base_X;
-	qreal Base_Y;
+
 
 	double  scale_x;
 	double  scale_y;
-	unsigned long int lenght_axis_h;
-	unsigned long int lenght_axis_v;
-
-	double first_x;//��������� �������� �� �
-	double first_y;
-
-	double cur_x_min;//������� ����������� �������� �� �
-	double cur_y_min;
 
 
-	double diap_x;//������������ �������� �� �
-	double diap_y;	
+
+
+
+	private:
 
 double Sk;
 
-	private:
+	qreal Base_X;
+	qreal Base_Y;
+
+	double diap_x;//������������ �������� �� �
+	double diap_y;	
+    void AddGrid();
+
+
+	unsigned long int lenght_axis_h;
+	unsigned long int lenght_axis_v;
+
+
+
 		unsigned long int Wa;
 		unsigned long int Ha;
 //		void paintEvent(QPaintEvent *);

@@ -321,15 +321,21 @@ void Gr_View::ShowGrid ( double x_beg,double tmp_diap_x,double y_beg,double tmp_
 {
 	first_x=x_beg;
 	first_y=y_beg;
-	diap_x=tmp_diap_x;
-	diap_y=tmp_diap_y;
+
+SetDiap_X(tmp_diap_x);
+SetDiap_Y(tmp_diap_y);
+
+//	diap_x=tmp_diap_x;
+//	diap_y=tmp_diap_y;
 
 	diap_base_x=tmp_diap_x;
 	diap_base_y=tmp_diap_y;
 
 
 
-	CalcData ( x_beg,y_beg );//x_beg+diap_x,,y_beg+diap_y
+//	CalcData (first_x, first_y  );//x_beg+diap_x,,y_beg+diap_y//x_beg,y_beg 
+	Draw_Gr (first_x, first_y  );//x_beg+diap_x,,y_beg+diap_y//x_beg,y_beg 
+
 	SetBegin_XY ( first_x, first_y );
 
 }
@@ -358,12 +364,13 @@ old_view_x=viewport()->width()/scale_x_GV;
 
 	old_scale_x=sc_x;
 	scale_x_GV=sc_x;
-	diap_x=diap_base_x/sc_x;
-
+	SetDiap_X(diap_base_x/sc_x);
+//	diap_x=diap_base_x/sc_x;
 
 	old_scale_y=sc_y;
 	scale_y_GV=sc_y;
-	diap_y=diap_base_y/sc_y;
+	SetDiap_Y(diap_base_y/sc_y);
+//	diap_y=diap_base_y/sc_y;
 
 
 new_view_x=viewport()->width()/scale_x_GV;

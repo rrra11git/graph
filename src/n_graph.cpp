@@ -250,6 +250,10 @@ void N_Graph::Set_W_H(unsigned long int tmp_w, unsigned long int tmp_h)
 {
 	Wa=tmp_w;
 	Ha=tmp_h;
+
+	lenght_axis_h=Wa-larrow-10;//-Sk-25
+	lenght_axis_v=Ha-larrow-10;//-Sk-25
+
 }
 
 
@@ -259,6 +263,10 @@ void N_Graph::Set_W_H(unsigned long int tmp_w, unsigned long int tmp_h)
 void N_Graph::Draw_Gr(double min_tmp_x, double min_tmp_y)//double max_tmp_x,, double max_tmp_y
 {
 //qDebug("Draw_Gr min_tmp_x %f  min_tmp_y %f",min_tmp_x,min_tmp_y);
+
+
+double cur_x_min;//������� ����������� �������� �� �
+double cur_y_min;
 
 cur_x_min=min_tmp_x;
 cur_y_min=min_tmp_y;
@@ -437,7 +445,7 @@ void N_Graph::AddGrid()
 
 /*!
     \fn N_Graph::AddData(std::vector<QPointF>)
- */
+
 void N_Graph::AddData(std::vector<QPointF> tmp_point)
 {
 	std::vector<QPointF>::iterator tmp_it;
@@ -447,27 +455,18 @@ void N_Graph::AddData(std::vector<QPointF> tmp_point)
 	}
 
 }
-
+ */
 
 /*!
     \fn N_Graph::CalcData(double tmp_w,double tmp_h)
- */
+
 void N_Graph::CalcData(double first_h_diap,double first_v_diap)//
 {
-
-	lenght_axis_h=Wa-larrow-10;//-Sk-25
-	lenght_axis_v=Ha-larrow-10;//-Sk-25
-
-	scale_x=lenght_axis_h/diap_x;//(second_h_diap-first_h_diap)
-	scale_y=lenght_axis_v/diap_y;//(second_v_diap-first_v_diap)
-
-
-
 
 	Draw_Gr( first_h_diap,  first_v_diap);//second_h_diap,, second_v_diap
 
 }
-
+ */
 
 /*!
     \fn N_Graph::SetDiap_X(double)
@@ -475,6 +474,8 @@ void N_Graph::CalcData(double first_h_diap,double first_v_diap)//
 void N_Graph::SetDiap_X(double tmp)
 {
 	diap_x=tmp;
+	scale_x=lenght_axis_h/diap_x;//(second_h_diap-first_h_diap)
+
 }
 
 
@@ -484,4 +485,5 @@ void N_Graph::SetDiap_X(double tmp)
 void N_Graph::SetDiap_Y(double tmp)
 {
 	diap_y=tmp;
+	scale_y=lenght_axis_v/diap_y;//(second_v_diap-first_v_diap)
 }

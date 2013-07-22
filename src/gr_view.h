@@ -24,6 +24,10 @@ class Gr_View : public QGraphicsView, public N_Graph
 		void tmp_init();//add data items (correct this later)
 		void tmp3();// 
 
+	double first_x;//��������� �������� �� �
+	double first_y;
+
+
 	private:
 
 
