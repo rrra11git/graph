@@ -11,7 +11,7 @@
 //#define Sk 3
 #define St_l 2
 #define larrow 15
-
+#define precision 1
 
 N_Graph::N_Graph()
 {
@@ -122,7 +122,7 @@ void N_Graph::AddArrow(qreal x_tmp,qreal y_tmp,double rotat)
 
 
 void N_Graph::AddTextH_Axis(qreal x_tmp, qreal y_tmp,QString str_tmp, double rotat)
-{
+{//return;
 	QMatrix rotationMatrix;
 
 	QPainterPath tmpPath;
@@ -172,7 +172,7 @@ void N_Graph::SetDiapH(double min_tmp,double tmp_max)//, unsigned long int lengh
 
 
 
-	tmp_string.setNum(min_tmp,'f',2);//
+	tmp_string.setNum(min_tmp,'f',precision);//
 	par_val=std::make_pair(tmp_string,0);//надпись и смещение штриха относительно 0
 	Data_H_Axis.push_back(par_val);
 
@@ -196,7 +196,7 @@ void N_Graph::SetDiapH(double min_tmp,double tmp_max)//, unsigned long int lengh
 		cur_l+=st_px;
 	}
 
-	tmp_string.setNum(tmp_max,'f',2);
+	tmp_string.setNum(tmp_max,'f',precision);
 	par_val=std::make_pair(tmp_string,lenght_axis_h);//надпись и смещение штриха относительно 0
 	Data_H_Axis.push_back(par_val);
 
@@ -375,7 +375,7 @@ void N_Graph::SetDiapV(double min_tmp,double tmp_max)//, unsigned long int lengh
 
 ///--------
 
-	tmp_string.setNum(min_tmp,'f',2);
+	tmp_string.setNum(min_tmp,'f',precision);
 	par_val=std::make_pair(tmp_string,0);//надпись и смещение штриха относительно 0
 	Data_V_Axis.push_back(par_val);
 	double cur_l;
@@ -399,7 +399,7 @@ void N_Graph::SetDiapV(double min_tmp,double tmp_max)//, unsigned long int lengh
 		cur_l+=st_px;
 	}
 
-	tmp_string.setNum(tmp_max,'f',2);
+	tmp_string.setNum(tmp_max,'f',precision);
 	par_val=std::make_pair(tmp_string,lenght_axis_v);//надпись и смещение штриха относительно 0
 	Data_V_Axis.push_back(par_val);
 

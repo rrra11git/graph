@@ -18,7 +18,6 @@ graphicsView->SetSize(tmp_size.width(),tmp_size.height());//
 
 
 graphicsView->ShowGrid(-10,100,-10,100);
-graphicsView->tmp_init(); //add items
 
 connect(scr_h,SIGNAL(valueChanged ( int )),graphicsView,SLOT(SetX(int)));
 connect(scr_v,SIGNAL(valueChanged ( int )),graphicsView,SLOT(SetY(int)));
@@ -30,18 +29,49 @@ overlay->show();
 
 //overlay->hide();
 
-graphicsView->CalcSlyder();
+///-----setup  sliders----
 
+
+//qApp->processEvents();
+scr_h->setGeometry(
+				(graphicsView->geometry()).x(),
+				tmp_size.height()-20,
+				(graphicsView->geometry()).width(),
+				15 //heigt slider
+			 ) ;
+
+scr_v->setGeometry(
+				tmp_size.width()-20,
+				(graphicsView->geometry()).y(),
+15,
+				graphicsView->height()-5
+				
+			 ) ;
+
+/*
+				(graphicsView->geometry()).x(),
+				tmp_size.height()-20,
+				(graphicsView->geometry()).width(),
+				15 //heigt slider
+*/
+
+
+graphicsView->CalcSlyder();
 scr_h->setValue(0);
 scr_v->setValue(scr_v->maximum());
 
-///
+///---------------------
+
+
+
+///---add figure--- for test
+graphicsView->tmp_init(); //add items
+
 std::vector<QPointF> tmp;
 tmp.push_back(QPointF(15,30));
 graphicsView->AddData(tmp);
+///------
 
-
-///
 }
 
 MW_NGraph::~MW_NGraph()

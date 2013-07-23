@@ -5,7 +5,7 @@
 #include "mw_ngraph.h"
 #include "node.h"
 
-#define margin_right 20
+#define margin_right 5
 #define margin_top 10
 
 
@@ -86,7 +86,7 @@ void Gr_View::SetSize ( double tmp_w,double tmp_h )
 {
 
 	text_space_x=60.5;//60.5
-	text_space_y=60.5;//+18
+	text_space_y=10+60.5;// 10==for slider
 
 //	parent->hSpacer->changeSize(text_space_x-0.5,10,QSizePolicy::Fixed,QSizePolicy::Fixed);
 //	parent->hSpacer->changeSize(text_space_y-0.5,10,QSizePolicy::Fixed,QSizePolicy::Fixed);
@@ -99,7 +99,10 @@ base_scene_size_x=scene()->width();
 
 //--------
 //qApp->processEvents();
-setGeometry (text_space_x,0.5+35,tmp_w-text_space_x-45,tmp_h-text_space_y-35);//ERROR!!!!
+setGeometry (text_space_x,
+		0.5+(margin_top+15+10),    //15==larrow    10=="gap between stroke and arrow"
+		tmp_w-text_space_x-(margin_right+15+10),
+		tmp_h-text_space_y-(margin_top+15+10)  );//ERROR!!!!
 /*
 35=10+margin_right+larrow
 */
@@ -420,7 +423,7 @@ void Gr_View::Draw_Gr_()
 {
 //qDebug("void Gr_View::Draw_Gr_()");
 	QPointF tmmp,oops;
-//	tmmp= mapToScene ( -0,height()+0.5 );
+
 	tmmp= mapToScene ( -0,0 );
 
 

@@ -1,3 +1,8 @@
+/*
+1) Set size scene and graphcsview
+2) ShowGrid
+3) CalcSlyder
+*/
 #ifndef Gr_VIEW_H
 #define Gr_VIEW_H
 
@@ -14,23 +19,23 @@ class Gr_View : public QGraphicsView, public N_Graph
 
 	public:
 		Gr_View(QWidget * parent = 0);
-		void CalcSlyder();
-		void ShowGrid(double ,double,double ,double);
-		void AddData(std::vector<QPointF> tmp_point);//отрисовка фигур 
 		~Gr_View();
-		void Scale(qreal,qreal);
+
 
 		void SetSize(double,double);//set size Gr_View (pcs)
-		void tmp_init();//add data items (correct this later)
+		void ShowGrid(double ,double,double ,double); //(begin_x,diap_x,begin_y,diap_y)
+
+		void CalcSlyder();//calc parameters sliders depend on width, hieght scene and viewport 
+
+		void Scale(qreal,qreal);//(scale_x,scale_y)
+
+		void AddData(std::vector<QPointF> tmp_point);//отрисовка фигур 
 		void tmp3();// 
+		void tmp_init();//add data items (correct this later)
+	private:
 
 	double first_x;//��������� �������� �� �
 	double first_y;
-
-
-	private:
-
-
 		std::vector<QPointF> ConvertCoord(std::vector<QPointF>);//перевод в систему координатсцены для отрисовки
 		void CalcBaseScene();//вызывается при изменении высоты сцены
 
@@ -43,11 +48,11 @@ class Gr_View : public QGraphicsView, public N_Graph
 		double scale_y_GV;
 		void scrollContentsBy ( int dx, int dy );
 
-		void Draw_Gr_();
+		void Draw_Gr_();//paint koord dependence current position scene
 
 
     void SetXY(int, int);
-    void SetSlyder();
+    void SetSlyder();//set value sliders depend position scene
 
 	
 		std::vector<QPointF> data_point;
