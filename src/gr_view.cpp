@@ -401,8 +401,8 @@ void Gr_View::CalcSlyder()
 	parent->scr_v->setPageStep((viewport())->height());///scale_y_GV
 //
 
-	QPointF tmmp;
-	tmmp= mapToScene ( -0,0 );
+//	QPointF tmmp;
+//	tmmp= mapToScene ( -0,0 );
 //if(tmmp.x()>=9653) 	parent->scr_h->setValue (9653);
 //	else 
 

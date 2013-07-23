@@ -15,7 +15,8 @@ class N_Graph
 		~N_Graph();
 
 
-//		unsigned long int SmX;
+
+// SetGeometry();
 
     void SetBasePoint(qreal,qreal);
     void Set_W_H(unsigned long int, unsigned long int);
@@ -24,11 +25,6 @@ class N_Graph
 
     void Draw_Gr(double, double);//,double,double
 
- //   void AddData(std::vector<QPointF>);
-//    void CalcData(double ,double);// ���������� ��������� ��������  
-
-
-//	std::vector<unsigned long int>:: iterator optim_delta_it;
 		QPainterPath rectPath;
 		QPainterPath textPath;
 		QPainterPath gridPath;
